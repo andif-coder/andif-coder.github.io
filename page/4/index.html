@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-12-16 19:25:20'
+  postUpdate: '2023-12-17 17:27:28'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -160,60 +160,74 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/11/%E6%B4%9B%E8%B0%B7-P1782/" title="洛谷 P1782">洛谷 P1782</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-11T08:10:37.000Z" title="Created 2023-11-11 16:10:37">2023-11-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1782 旅行商的背包
-题意
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/11/%E6%B4%9B%E8%B0%B7-P1757/" title="洛谷 P1757">洛谷 P1757</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-11T14:03:21.000Z" title="Created 2023-11-11 22:03:21">2023-11-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1757 通天之分组背包
+ 题意
+给你nnn个物品，每个物品的重量为aia_iai​，价值为bib_ibi​，并且每个物品都属于一个组，最多有kkk组，每个组里面的物品不能一起取（最多取一个物品），给你一个容量为mmm的背包，问你最大价值为多少
+ 数据范围
+1≤n,m≤10001 \leq n, m \leq 10001≤n,m≤1000
+1≤k≤1001 \leq k \leq 1001≤k≤100
+−231≤a,b≤231−1-2^{31} \leq a,b \leq 2^{31} - 1−231≤a,b≤231−1
+ 思路
+分组背包模板题：
+我们设f[i][j]f[i][j]f[i][j]表示前iii组物品，容量小于等于 jjj的情况下的最大价值。那么假设i−1i-1i−1的情况都求解好了，现在考虑第iii组，那么有下列两种情况：
+
+第iii组我都不取， f[i−1][j]f[i - 1][j]f[i−1][j].
+第iii组我取一个， f[i−1][j−vk]+wkf[i  - 1][j - v_k] + w_kf[i−1][j−vk​]+wk​.
+
+这样我们就可以得到转移 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/11/%E6%B4%9B%E8%B0%B7-P1782/" title="洛谷 P1782">洛谷 P1782</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-11T08:10:37.000Z" title="Created 2023-11-11 16:10:37">2023-11-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1782 旅行商的背包
+ 题意
 有nnn种物品，每种物品的体积为ViV_iVi​，价值为WiW_iWi​，一共有DiD_iDi​件
 还有一批物品，有mmm种，第iii件的价值YiY_iYi​和体积XiX_iXi​的关系如下，Yi=aiXi2+biXi+ciY_i = a_iX_i^2 + b_iX_i + c_iYi​=ai​Xi2​+bi​Xi​+ci​。
 问你背包体积为CCC的时候，最大的价值为多少。
-数据范围
+ 数据范围
 1≤n≤1041 \leq n \leq 10^41≤n≤104
 1≤m≤51 \leq m \leq 51≤m≤5
 1≤C≤1041 \leq C \leq 10^41≤C≤104
 1≤Wi,Vi,Di≤10001 \leq W_i, V_i, D_i \leq 10001≤Wi​,Vi​,Di​≤1000
 −1000≤ai,bi,ci≤1000-1000 \leq a_i,b_i,c_i \leq 1000−1000≤ai​,bi​,ci​≤1000
-思路
+ 思路
 我们分开考虑，对于nnn个物品，我们可以直接用二进制优化的多重背包即可，
-对于mmm种图片，他有个特殊点，就是体积 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/11/%E6%B4%9B%E8%B0%B7-P5365/" title="洛谷 P5365">洛谷 P5365</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-11T06:29:12.000Z" title="Created 2023-11-11 14:29:12">2023-11-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P5365 [SNOI2017] 英雄联盟
-题意
+对于mmm种图片，他有个特殊点， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/11/%E6%B4%9B%E8%B0%B7-P5365/" title="洛谷 P5365">洛谷 P5365</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-11T06:29:12.000Z" title="Created 2023-11-11 14:29:12">2023-11-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P5365 [SNOI2017] 英雄联盟
+ 题意
 有个NNN个英雄，每个英雄有KiK_iKi​个皮肤，这个英雄的所有皮肤价格都是CiC_iCi​，
 假设这个共有555个英雄，然后买的皮肤分别为0,0,3,2,40,0,3,2,40,0,3,2,4，那么方案数为3×2×4=243 \times 2 \times 4 = 243×2×4=24，问你方案数至少为MMM的最小花费。
-数据范围
+ 数据范围
 1≤N≤max(5,log24i1 \leq N \leq max(5, log_2^4 i1≤N≤max(5,log24​i
 M≤1017M \leq 10 ^ {17}M≤1017
 1≤Ki≤101 \leq K_i \leq 101≤Ki​≤10
 1≤Ci≤1991 \leq C_i \leq 1991≤Ci​≤199
-思路
+ 思路
 比较明显的多重背包，我们假设f[i][j]f[i][j]f[i][j]表示前iii个英雄，总共花费jjj的最大方案数，
 那么背包的容量其实就是购买所有皮肤的花费
 转移方程为
-f[i][j]=max(f[i−1][j],f[i−1][j−h∗c[i]]∗h)f[i][j] = m ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P1853/" title="洛谷 P1853">洛谷 P1853</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T08:40:33.000Z" title="Created 2023-11-05 16:40:33">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1853 投资的最大效益
-题意
+f[i][j]=max(f[i−1][j],f[i−1][j−h∗c[i]]∗h)f[i][j] ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P1853/" title="洛谷 P1853">洛谷 P1853</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T08:40:33.000Z" title="Created 2023-11-05 16:40:33">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1853 投资的最大效益
+ 题意
 给你一些债券，每种债券至少投资aia_iai​，一年后可以收到ai+bia_i + b_iai​+bi​的钱，
 已知你的初始资产为sss，有ddd种债券，问你怎么投资，可以在nnn年后，获得最大的总资产
-数据范围
+ 数据范围
 1≤s≤1061 \leq s \leq 10^61≤s≤106
 2≤n≤402 \leq n \leq 402≤n≤40
 1≤d≤101 \leq d \leq 101≤d≤10
 1≤a≤1041 \leq a \leq 10^41≤a≤104 并且 aaa一定是100010001000的倍数
 bbb不超过aaa的10%10\%10%
-思路
+ 思路
 假设债券是最大收益1010%10，并且初始资产为最大10610^6106，那么最后的资产为106∗1.14010 ^ 6 * 1.1 ^ {40}106∗1.140，差不多4×1074 \times 10 ^ 74×107的级别，
 这样我们每年都做个完全背包的话，显然复杂度不够，
-我们观察数据范围，发现aaa一定是100010001000的倍数，那么其实，每一年初始资产s%1000s \% 1000s% ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2918/" title="洛谷 P2918">洛谷 P2918</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T08:34:00.000Z" title="Created 2023-11-05 16:34:00">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2918 [USACO08NOV] Buying Hay S
-题意
+我们观察数据范围，发现aaa一定是100010001000的倍数，那么其实，每一年初始资产s%1000s \% 10 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2918/" title="洛谷 P2918">洛谷 P2918</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T08:34:00.000Z" title="Created 2023-11-05 16:34:00">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2918 [USACO08NOV] Buying Hay S
+ 题意
 有nnn种干草，每种干草的重量为pip_ipi​，开销为cic_ici​，每种干草的数量是无限的
 现在你要至少hhh重量的干草，问你怎么样开销可以最少
-数据范围
+ 数据范围
 1≤h≤500001 \leq h \leq 500001≤h≤50000
 1≤n≤1001 \leq n \leq 1001≤n≤100
 1≤pi,ci≤50001 \leq p_i, c_i \leq 50001≤pi​,ci​≤5000
-思路
+ 思路
 题目说至少为hhh，其实[h,h+mp][h, h + mp][h,h+mp]范围内都可能是最小开销，其中mp=max pimp = max \space p_imp=max pi​
 知道这个范围，我们就可以知道背包的容量为多少了（h+mph + mph+mp），
 那么其实就是完全背包的模板题目，只是把最大变成最小
-代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748/** *    a ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2340/" title="洛谷 P2340">洛谷 P2340</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T07:41:13.000Z" title="Created 2023-11-05 15:41:13">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2340 [USACO03FALL] Cow Exhibition G
-题意
+ 代码
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748/** * ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2340/" title="洛谷 P2340">洛谷 P2340</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T07:41:13.000Z" title="Created 2023-11-05 15:41:13">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2340 [USACO03FALL] Cow Exhibition G
+ 题意
 有nnn只奶牛，第iii只奶牛的智商为sis_isi​，情商为fif_ifi​，
 现在要你选择几只（可以不选），问你在满足下列两种条件的情况下，
 
@@ -221,79 +235,62 @@ bbb不超过aaa的10%10\%10%
 奶牛智商之和大于等于零
 
 情商和智商的和的最大值为多少
-数据范围
+ 数据范围
 1≤n≤4001 \leq n \leq 4001≤n≤400
 −1000≤si,fi≤1000-1000 \leq s_i, f_i \leq 1000−1000≤si​,fi​≤1000
-思路
+ 思路
 我们可以固定一维，我们设状态方程为dp[i][j]dp[i][j]dp[i][j]，表示前iii个奶牛，情商恰好为jjj的情况下，最大的智商和。
 但是因为有负数的情况，所以我们需要把jjj统一加上m=1000∗nm = 1000 * nm=1000∗n，这样保证不会溢出。
 由于二维的内存会炸掉，我们可以用类似01背包内存优化的方法，来优化内存
 只是由于f[i]f[i]f[i]有正有负，在大于等于000的情况下，我们要逆序枚举jjj，在小于0的情况下，我们要正序枚举jjj
-注意点
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2946/" title="洛谷 P2946">洛谷 P2946</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T07:30:56.000Z" title="Created 2023-11-05 15:30:56">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2946 [USACO09MAR] Cow Frisbee Team S
-题意
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/05/%E6%B4%9B%E8%B0%B7-P2946/" title="洛谷 P2946">洛谷 P2946</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-05T07:30:56.000Z" title="Created 2023-11-05 15:30:56">2023-11-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2946 [USACO09MAR] Cow Frisbee Team S
+ 题意
 有nnn个奶牛，每个奶牛的能力为rir_iri​，然后你要选出一个奶牛队，
 要求奶牛队伍的奶牛数量满足[1,n][1, n][1,n]，并且奶牛队的能力之和为fff的倍数
 问你有几种队伍满足上述约束，答案对10810^8108取模。
-数据范围
+ 数据范围
 1≤n≤20001 \leq n \leq 20001≤n≤2000
 1≤f≤10001 \leq f \leq 10001≤f≤1000
 1≤ri≤1051 \leq r_i \leq 10^51≤ri​≤105
-思路
+ 思路
 我们知道，如果一个数是fff的倍数，那么这个数字对于fff的取模就为000，
 那么我们可以设置状态为：
 dp[i][j]dp[i][j]dp[i][j]表示前iii只奶牛，能力之和对fff的模数为jjj的方案数，
 最后答案就是dp[n][0]−1dp[n][0] - 1dp[n][0]−1，因为至少要有一只奶牛
-代码
-123456789101112131415161718192021222324252627282930313233343536373 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/30/%E6%B4%9B%E8%B0%B7-P1802/" title="洛谷 P1802">洛谷 P1802</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-30T14:42:18.000Z" title="Created 2023-10-30 22:42:18">2023-10-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1802 5倍经验日
-题意
+ 代码
+1234567891011121314151617181920212223242526272829303132333435 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/30/%E6%B4%9B%E8%B0%B7-P1802/" title="洛谷 P1802">洛谷 P1802</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-30T14:42:18.000Z" title="Created 2023-10-30 22:42:18">2023-10-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1802 5倍经验日
+ 题意
 给你nnn个怪兽和xxx个药水，
 打赢或者打输怪兽都有经验（赢的经验大于等于输的经验），要打赢第iii个怪兽至少要花费useiuse_iusei​个药水，问你最多能获得多少经验
-数据范围
+ 数据范围
 0≤n,x≤1030 \leq n, x \leq 10^30≤n,x≤103
 0&lt;losei≤wini≤1060 &lt; lose_i \leq win_i \leq 10^60&lt;losei​≤wini​≤106
 0≤usei≤1030 \leq use_i \leq 10^30≤usei​≤103
-思路
+ 思路
 我们假设都输了，这样我们可以把输的经验都拿到，接着用01背包判断哪些要赢就行了
-代码
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/** *    author: andif *    created: 30.10.2023 22:37:16**/#include&lt;bits/stdc++.h&gt;using namespa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/26/Codeforces-1774/" title="Codeforces 1774">Codeforces 1774</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-26T15:21:42.000Z" title="Created 2023-10-26 23:21:42">2023-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">B - Coloring
-题意
+ 代码
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/** *    author: andif *    created: 30.10.2023 22:37:16**/#include&lt;bits/stdc++.h&gt;using na ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/26/Codeforces-1774/" title="Codeforces 1774">Codeforces 1774</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-26T15:21:42.000Z" title="Created 2023-10-26 23:21:42">2023-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> B - Coloring
+ 题意
 给你一个数组长度为nnn，让你用mmm种颜色给数组的每个元素染色，
 要求第iii种颜色要用a[i]a[i]a[i]次，并且任意连续长度为kkk的子数组里面的任意颜色要不同
 问你能不能找到一个合法方案
-思路
+ 思路
 首先，我们把连续长度kkk的子数组都拿出来，当成一个块
 那么每个颜色在一个块里面最多出现111次，如果有个颜色的a[i]a[i]a[i]超过了块的数量，肯定不合法
 然后有个特殊情况，就是nmod  k!=0n \mod k != 0nmodk!=0的时候，最后一块的数量不是 nk\frac{n}{k}kn​，我们单独用数量最多的那些颜色，先把它填满就好
-代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849/** *    author: andif *    created: 26.10.2023 23:09:44**/#include&lt;bits/stdc++.h&gt;using namespace std;#de ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/26/Codeforces-1800/" title="Codeforces 1800">Codeforces 1800</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-26T14:44:45.000Z" title="Created 2023-10-26 22:44:45">2023-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">E2 - Unforgivable Curse (hard version)
-题意
+ 代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849/** *    author: andif *    created: 26.10.2023 23:09:44**/#include&lt;bits/stdc++.h&gt;using namespace std ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/26/Codeforces-1800/" title="Codeforces 1800">Codeforces 1800</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-26T14:44:45.000Z" title="Created 2023-10-26 22:44:45">2023-10-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> E2 - Unforgivable Curse (hard version)
+ 题意
 给你两个字符串sss, ttt，它们的长度都为nnn，
 接着给你一个kkk，你可以执行如下操作，
 对于两个下标iii,jjj，如果满足∣i−j∣=k|i - j| = k∣i−j∣=k或者∣i−j∣=k+1|i - j| = k + 1∣i−j∣=k+1，那么就可以交换s[i]s[i]s[i]和s[j]s[j]s[j]
 你可以执行任意次，问你有没有办法把sss变成ttt
-思路
+ 思路
 如果把可以交换的下标，连成一个图，
 不难发现，相同连通块的所有字符都可以任意互换
 那么我们只要保证sss和ttt的任意连通块里面的字符都相等即可
-代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758/** *    author: andif *    created: 26.10.2023 22:32:51**/#include&lt;bits/stdc++.h& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/Codeforces-1809/" title="Codeforces 1809">Codeforces 1809</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-24T16:49:32.000Z" title="Created 2023-10-25 00:49:32">2023-10-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">C - Sum on Subarrays
-题意
-给你两个数nnn, kkk，
-让你构造一个长度为nnn的数组，满足下面两个条件
-
-kkk个子数组满足和为正
-(n+1)∗n2−k\frac{(n + 1) * n}{2} - k2(n+1)∗n​−k个剩余子数组的和为负
-
-数据范围
-1≤t≤50001 \leq t \leq 50001≤t≤5000
-2≤n≤302 \leq n \leq 302≤n≤30
-0≤k≤(n+1)∗n20 \leq k \leq \frac{(n + 1) * n}{2}0≤k≤2(n+1)∗n​
-思路
-我们可以先构造一个所有子数组和都为正数的情况，比如1,2,⋯ ,n1, 2, \cdots, n1,2,⋯,n
-接着我们开始把一些数字变成负数，让正数子数组的数量变少，比如第一个数字，如果我们把它变成−1000-1000−1000的话，整个正数组的数量就少了nnn，接着就考虑第二个数字，我们可以调整它的大小，让正数子数组的数量接着减少（最多减少n−1n - 1n−1)，那么就可以构造所有情况了
-代码
-12345678910111213141516171819 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/16/%E6%B4%9B%E8%B0%B7-CF55D/" title="洛谷 CF55D">洛谷 CF55D</a><time datetime="2023-12-16T11:02:00.000Z" title="Created 2023-12-16 19:02:00">2023-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/11/%E6%B4%9B%E8%B0%B7-CF1073E/" title="洛谷 CF1073E">洛谷 CF1073E</a><time datetime="2023-12-10T17:28:17.000Z" title="Created 2023-12-11 01:28:17">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E6%B4%9B%E8%B0%B7-CF628D/" title="洛谷 CF628D">洛谷 CF628D</a><time datetime="2023-12-10T13:30:16.000Z" title="Created 2023-12-10 21:30:16">2023-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E6%B4%9B%E8%B0%B7-P4124/" title="洛谷 P4124">洛谷 P4124</a><time datetime="2023-12-10T09:14:34.000Z" title="Created 2023-12-10 17:14:34">2023-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E6%B4%9B%E8%B0%B7-UVA1640/" title="洛谷 UVA1640">洛谷 UVA1640</a><time datetime="2023-12-10T07:15:57.000Z" title="Created 2023-12-10 15:15:57">2023-12-10</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">55</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-12-16T11:25:20.143Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+ 代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758/** *    author: andif *    created: 26.10.2023 22:32:51**/#include&lt;bits/stdc+ ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/17/%E6%B4%9B%E8%B0%B7-CF1560F2/" title="洛谷 CF1560F2">洛谷 CF1560F2</a><time datetime="2023-12-17T09:18:03.000Z" title="Created 2023-12-17 17:18:03">2023-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/16/%E6%B4%9B%E8%B0%B7-CF55D/" title="洛谷 CF55D">洛谷 CF55D</a><time datetime="2023-12-16T11:02:00.000Z" title="Created 2023-12-16 19:02:00">2023-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/11/%E6%B4%9B%E8%B0%B7-CF1073E/" title="洛谷 CF1073E">洛谷 CF1073E</a><time datetime="2023-12-10T17:28:17.000Z" title="Created 2023-12-11 01:28:17">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E6%B4%9B%E8%B0%B7-CF628D/" title="洛谷 CF628D">洛谷 CF628D</a><time datetime="2023-12-10T13:30:16.000Z" title="Created 2023-12-10 21:30:16">2023-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/10/%E6%B4%9B%E8%B0%B7-P4124/" title="洛谷 P4124">洛谷 P4124</a><time datetime="2023-12-10T09:14:34.000Z" title="Created 2023-12-10 17:14:34">2023-12-10</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">56</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-12-17T09:27:28.617Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
