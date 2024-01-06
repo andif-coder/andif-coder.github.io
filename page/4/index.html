@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-01-06 15:22:37'
+  postUpdate: '2024-01-06 17:08:06'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -160,57 +160,69 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/25/%E6%B4%9B%E8%B0%B7-P1435/" title="洛谷 P1435">洛谷 P1435</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-25T13:07:29.000Z" title="Created 2023-11-25 21:07:29">2023-11-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1435 [IOI2000] 回文字串
-题意
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/26/%E6%B4%9B%E8%B0%B7-P2014/" title="洛谷 P2014">洛谷 P2014</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-26T05:33:02.000Z" title="Created 2023-11-26 13:33:02">2023-11-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2014 [CTSC1997] 选课
+ 题意
+有nnn节课，每节课有一个学分sis_isi​，然后每节课可能还有前置课程kik_iki​，问你最多选mmm节课，你能获得的最大学分是多少
+ 数据范围
+1≤n,m≤3001 \leq n,m \leq 3001≤n,m≤300
+0≤ki≤n0 \leq k_i \leq n0≤ki​≤n
+1≤si≤201 \leq s_i \leq 201≤si​≤20
+ 思路
+我们构建一个森林，然后用一个超级节点把森林变成一个树，接着我们跑下树上背包，
+每个子树可以当成一个泛化的物品，f[i][j]f[i][j]f[i][j]就表示在iii这个节点，容量为jjj的情况下的最大学分.
+要注意的是因为选这个子树的话，这个子树的根一定要选（除了超级节点），所以我们处理完子树，最后要处理下根。
+ 代码
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465/** *     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/25/%E6%B4%9B%E8%B0%B7-P1435/" title="洛谷 P1435">洛谷 P1435</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-25T13:07:29.000Z" title="Created 2023-11-25 21:07:29">2023-11-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1435 [IOI2000] 回文字串
+ 题意
 给你一个长度为nnn的字符串，然后问你最少填充几个字符，可以让这个字符串变成回文串
-数据范围
+ 数据范围
 1≤n≤10001 \leq n \leq 10001≤n≤1000
-思路
+ 思路
 设状态为dp[i][j]dp[i][j]dp[i][j]表示区间[i,j][i, j][i,j]的子串变成回文串的最少需要字符数量，
 如果s[i]==s[j]s[i] == s[j]s[i]==s[j]，那么dp[i][j]=dp[i+1][j−1]dp[i][j] = dp[i + 1][j - 1]dp[i][j]=dp[i+1][j−1]，为什么这个一定是最优呢，我们可以假设一边s[i]s[i]s[i]去匹配里面的字符串，然后另外一个s[j]s[j]s[j]就得需要新增一个才能字符才能被匹配，而s[i]s[i]s[i]又最多减少一个内部字符串需要的字符，显然是不赚的。
-如果s[i]≠s[j]s[i] \neq s[j]s[i]​=s[j]的话，那么就有两种情况，我们可以用一个新的去匹配s[i]s[i]s[i]，那么dp[i+1][j]+1dp[i + 1][j]  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/Codeforces-607/" title="Codeforces 607">Codeforces 607</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T09:19:41.000Z" title="Created 2023-11-18 17:19:41">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">B - Zuma
-题意
+如果s[i]≠s[j]s[i] \neq s[j]s[i]=s[j]的话，那么就有两种情况，我们可以用一个新的去匹配s[i]s[i]s[i]，那么dp[i+1][j]+1dp[i + 1][ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/Codeforces-607/" title="Codeforces 607">Codeforces 607</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T09:19:41.000Z" title="Created 2023-11-18 17:19:41">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> B - Zuma
+ 题意
 给你一个长度为nnn的数组，第iii位的值是aia_iai​，你现在可以每次选择一个子数组，这个子数组是回文数组，然后花费111的代价把这个子数组去掉
 问你把整个数组去掉的最小代价是多少
-数据范围
+ 数据范围
 1≤n≤5001 \leq n \leq 5001≤n≤500
 1≤ai≤n1 \leq a_i \leq n1≤ai​≤n
-思路
+ 思路
 设方程为f[i][j]f[i][j]f[i][j]表示去除[i,j][i, j][i,j]的最小代价，
 不然发现，如果ai==aja_i == a_jai​==aj​的话，f[i][j]f[i][j]f[i][j]可以从f[i+1][j−1]f[i + 1][j - 1]f[i+1][j−1]直接转移过来，不需要花费额外的代价，因为每次消除的时候一定是一个回文串，那么回文串首尾都加一个相同的数字，肯定也是一个回文串，那么就可以一起消除
-如果ai≠aja_i \neq a_jai​​=aj​的话，我们就枚举分界点kkk，然后f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]f[i][j] = min(f[i][j] ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1880/" title="洛谷 P1880">洛谷 P1880</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T08:59:22.000Z" title="Created 2023-11-18 16:59:22">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1880 [NOI1995] 石子合并
-题意
+如果ai≠aja_i \neq a_jai​=aj​的话，我们就枚举分界点kkk，然后f[i][j]=min(f[i][j],f[i][k]+f[k+1][j]f[i][j] = min(f[i] ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1880/" title="洛谷 P1880">洛谷 P1880</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T08:59:22.000Z" title="Created 2023-11-18 16:59:22">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1880 [NOI1995] 石子合并
+ 题意
 给你nnn个石头排成一个圈，也就是首尾也相邻，每个石头有个权重aia_iai​，相邻的石头可以合并，每次合并后的分数是两堆石头的权重之和，每次合并后新的石头堆的权重为两个石头堆的权重和
 问你把nnn个石头合并成一个石头的最小分数和最大分数
-思路
+ 思路
 我们考虑相邻的石头间连接一条边，我们每次合并的时候其实就是删除一条边，那么如果我们把nnn个石头合并成为一个石头，其实就是删除了n−1n - 1n−1条边，
 按照这个思路的话，我们其实就可以枚举哪一条边我们不需要,然后区间动规就好，这样的复杂度是O(n4)O(n^4)O(n4)
 还有个方法，我们考虑把链复制一份拼到原来的链后面，也就是1,⋯ ,n,1,⋯ ,n1, \cdots, n, 1, \cdots, n1,⋯,n,1,⋯,n，这样的话，f[i][i−n+1]f[i][i - n + 1]f[i][i−n+1]是不是就是我们上面删除一条链的情况呢？这样的复杂度只要O((2n)3)O((2n)^3)O((2n)3)
-代码
-123456789101112131415161718192021222 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1775/" title="洛谷 P1775">洛谷 P1775</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T08:48:58.000Z" title="Created 2023-11-18 16:48:58">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1775 石子合并（弱化版）
-题意
+ 代码
+12345678910111213141516171819202 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1775/" title="洛谷 P1775">洛谷 P1775</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T08:48:58.000Z" title="Created 2023-11-18 16:48:58">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1775 石子合并（弱化版）
+ 题意
 给你nnn个石头，每个石头有个权重aia_iai​，相邻的石头可以合并，每次合并后的分数是两堆石头的权重之和，每次合并后新的石头堆的权重为两个石头堆的权重和
 问你把nnn个石头合并成一个石头的最小分数
-数据范围
+ 数据范围
 1≤n≤3001 \leq n \leq 3001≤n≤300
 1≤ai≤10001 \leq a_i \leq 10001≤ai​≤1000
-思路
+ 思路
 f[i][j]f[i][j]f[i][j]表示合并区间[i,j][i, j][i,j]的石头的最小分数，最终答案就是f[1][n]f[1][n]f[1][n]
-代码
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950/** *    author: andif *    created: 18.11.2023 16:45:30**/#include&lt;bits/stdc++.h&gt;using namespace std;#define de(x) cerr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P2851/" title="洛谷 P2851">洛谷 P2851</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T07:26:37.000Z" title="Created 2023-11-18 15:26:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2851 [USACO06DEC] The Fewest Coins G
-题意
+ 代码
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950/** *    author: andif *    created: 18.11.2023 16:45:30**/#include&lt;bits/stdc++.h&gt;using namespace std;#define de(x) ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P2851/" title="洛谷 P2851">洛谷 P2851</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T07:26:37.000Z" title="Created 2023-11-18 15:26:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2851 [USACO06DEC] The Fewest Coins G
+ 题意
 你现在nnn中面值的货币，第iii种货币有面值为viv_ivi​，数量为cic_ici​，
 你现在想要买TTT价值的物品，问你怎么花钱，可以使得换手次数最少（你用了xxx张货币，店家还你yyy张货币，那么换手就是x+yx + yx+y）
 假设店家每种货币都有无限张，并且店家始终用最少的货币数量来给你找钱
-数据范围
+ 数据范围
 1≤T≤100001 \leq T \leq 100001≤T≤10000
 1≤n≤1001 \leq n \leq 1001≤n≤100
 1≤vi≤1201 \leq v_i \leq 1201≤vi​≤120
 0≤ci≤100000 \leq c_i \leq 100000≤ci​≤10000
-思路
+ 思路
 其实你可以假设你花了xxx元，那么这个xxx最多就是T+maxviT + max v_iT+maxvi​，然后跑多重背包，就可以知道要花xxx元的最少货币数量，
-接着我们假设店家找零yyy元，那么yyy的范围其实就是[0,maxvi][0, max v_i][0,maxvi​]，这样可以用完全背 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P2633/" title="洛谷 P2633">洛谷 P2633</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T06:55:43.000Z" title="Created 2023-11-18 14:55:43">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2623 物品选取
-题意
+接着我们假设店家找零yyy元，那么yyy的范围其实就是[0,maxvi][0, max v_i][0,maxvi​]，这样可以 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P2633/" title="洛谷 P2633">洛谷 P2633</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T06:55:43.000Z" title="Created 2023-11-18 14:55:43">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2623 物品选取
+ 题意
 给你nnn个物品，分为甲乙丙三类
 
 
@@ -224,62 +236,49 @@ f[i][j]f[i][j]f[i][j]表示合并区间[i,j][i, j][i,j]的石头的最小分数�
 
 
 假设你的背包体积为mmm，问你能获得的最大价值是多少
-数据范围
+ 数据范围
 1≤n≤1001 \leq n \leq 1001≤n≤100
 1≤m≤5001 \leq m \leq 5001≤m≤500
 0≤A,B,C≤2000 \leq A, B, C \leq 2000≤A,B,C≤200
-思路
+ 思路
 甲类跑01背包，乙类跑多重背包，丙类跑完全背包
-代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394/** *    au ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1833/" title="洛谷 P1833">洛谷 P1833</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T06:20:43.000Z" title="Created 2023-11-18 14:20:43">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1833 樱花
-题意
+ 代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394/** *  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E6%B4%9B%E8%B0%B7-P1833/" title="洛谷 P1833">洛谷 P1833</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-18T06:20:43.000Z" title="Created 2023-11-18 14:20:43">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1833 樱花
+ 题意
 你拥有一段时间，然后你可以用这些时间来看nnn种花，每种花可以看pip_ipi​次，能获得cic_ici​的美感，并且耗费tit_iti​的时间，
 问你怎么看才能在你拥有的时间内，获得最多的美感
-数据范围
+ 数据范围
 最多拥有时间100010001000分钟
 0≤ci≤2000 \leq c_i \leq 2000≤ci​≤200
 0≤pi,ti≤1000 \leq p_i, t_i \leq 1000≤pi​,ti​≤100
-思路
+ 思路
 其实就是跑一遍多重背包，再跑一遍完全背包就好
-代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263/** *    author: andif *    created: 18.11.2023 14:04:00**/#include&lt;bits/stdc++.h&gt;using namespace std;#define de(x) cerr &lt;& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/12/%E6%B4%9B%E8%B0%B7-P2732/" title="洛谷 P2732">洛谷 P2732</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-12T08:23:53.000Z" title="Created 2023-11-12 16:23:53">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P2732 [USACO3.3] 商店购物 Shopping Offers
-题意
+ 代码
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263/** *    author: andif *    created: 18.11.2023 14:04:00**/#include&lt;bits/stdc++.h&gt;using namespace std;#define de(x) cerr  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/12/%E6%B4%9B%E8%B0%B7-P2732/" title="洛谷 P2732">洛谷 P2732</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-12T08:23:53.000Z" title="Created 2023-11-12 16:23:53">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P2732 [USACO3.3] 商店购物 Shopping Offers
+ 题意
 有bbb种商品，每个商品有自己的价格，可以单独购买
 或者你可以选择优惠方案，一共有sss个优惠政策，每个方案里面有一些商品的组合，会比一个个去买便宜点，
 假设你了解自己需要哪些商品，问你怎么买花费最少
-数据范围
+ 数据范围
 0≤s≤990 \leq s \leq 990≤s≤99
 0≤b≤50 \leq b \leq 50≤b≤5
-思路
+ 思路
 每个优化政策和每个单独购买可以看作一个物品，然后每一种商品可以认为是一种费用，跑下多维背包即可
-代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108/** *    author: andif *     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/12/%E6%B4%9B%E8%B0%B7-P1541/" title="洛谷 P1541">洛谷 P1541</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-12T07:18:33.000Z" title="Created 2023-11-12 15:18:33">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P1541 [NOIP2010 提高组] 乌龟棋
-题意
+ 代码
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108/** *    author: andif  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/12/%E6%B4%9B%E8%B0%B7-P1541/" title="洛谷 P1541">洛谷 P1541</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-12T07:18:33.000Z" title="Created 2023-11-12 15:18:33">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P1541 [NOIP2010 提高组] 乌龟棋
+ 题意
 有nnn个格子，编号从111到nnn，现在起点111出发，要达到终点nnn,
 你有四种卡片，一共mmm个，第iii种卡片可以走iii步，每次走到第iii个位置，你就可以获得aia_iai​的分数，起点的分数默认获得，问你怎么使用卡片达到终点的分数最大
-数据范围
+ 数据范围
 1≤n≤3501 \leq n \leq 3501≤n≤350
 1≤m≤1201 \leq m \leq 1201≤m≤120
 0≤ai≤1000 \leq a_i \leq 1000≤ai​≤100
 1≤bi≤41 \leq b_i \leq 41≤bi​≤4
-思路
+ 思路
 f[a][b][c][d]f[a][b][c][d]f[a][b][c][d]表示用了第一种卡片aaa个，第二种卡片bbb个，第三种卡片ccc个，第四种卡片ddd个的最大分数，
 本来以为要开五维度的数组，但是第一位是当前的位置，但是最终发现，你卡片都定了的话，位置其实也定了
-代码
-12345678910111213141516171819202122232425262728293031323334353637 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/12/%E6%B4%9B%E8%B0%B7-P5322/" title="洛谷 P5322">洛谷 P5322</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-12T06:28:17.000Z" title="Created 2023-11-12 14:28:17">2023-11-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P5322 [BJOI2019] 排兵布阵
-题意
-有一款游戏，游戏里面有nnn个城堡，每个玩家有mmm个士兵，
-假设两个玩家对战，玩家可以任意分配自己的士兵到某个城堡，只要士兵的数量之和不超过mmm即可，
-如果玩家在第iii的城堡分配士兵的数量严格大于另一个玩家分配到这个城堡的士兵数量的两倍，那么这个玩家就可以获得iii，
-现在你要和sss个玩家同时对战，并且你的策略是固定的，sss个玩家的策略你也知道，问你怎么选择你的策略，可以使得你的得分最大
-数据范围
-1≤s≤1001 \leq s \leq 1001≤s≤100
-1≤n≤1001 \leq n \leq 1001≤n≤100
-1≤m≤200001 \leq m \leq 200001≤m≤20000
-思路
-最一开始的思路，f[i][j]f[i][j]f[i][j]表示钱iii个城堡分配了jjj个士兵的最大得分，
-那么伪代码就是
-1234for (i = 1 -&gt; n)    for (j = 0 -&gt; m)        for (k = 0 -&gt; j)            f[i][j] = f[i][k] ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/06/%E6%B4%9B%E8%B0%B7-P4766/" title="洛谷 P4766">洛谷 P4766</a><time datetime="2024-01-06T07:03:49.000Z" title="Created 2024-01-06 15:03:49">2024-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/06/%E6%B4%9B%E8%B0%B7-P7914/" title="洛谷 P7914">洛谷 P7914</a><time datetime="2024-01-06T06:12:06.000Z" title="Created 2024-01-06 14:12:06">2024-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/03/%E7%89%9B%E5%AE%A2-220446/" title="牛客 220446">牛客 220446</a><time datetime="2024-01-03T15:34:43.000Z" title="Created 2024-01-03 23:34:43">2024-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/Codeforces-Gym-103447/" title="Codeforces Gym 103447">Codeforces Gym 103447</a><time datetime="2024-01-01T08:22:06.000Z" title="Created 2024-01-01 16:22:06">2024-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/Codeforces-Gym-103389/" title="Codeforces Gym 103389">Codeforces Gym 103389</a><time datetime="2024-01-01T05:49:08.000Z" title="Created 2024-01-01 13:49:08">2024-01-01</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">68</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-06T07:22:37.214Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+ 代码
+123456789101112131415161718192021222324252627282930313233343 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/06/%E6%B4%9B%E8%B0%B7-CF1312E/" title="洛谷 CF1312E">洛谷 CF1312E</a><time datetime="2024-01-06T08:59:08.000Z" title="Created 2024-01-06 16:59:08">2024-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/06/%E6%B4%9B%E8%B0%B7-P4766/" title="洛谷 P4766">洛谷 P4766</a><time datetime="2024-01-06T07:03:49.000Z" title="Created 2024-01-06 15:03:49">2024-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/06/%E6%B4%9B%E8%B0%B7-P7914/" title="洛谷 P7914">洛谷 P7914</a><time datetime="2024-01-06T06:12:06.000Z" title="Created 2024-01-06 14:12:06">2024-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/03/%E7%89%9B%E5%AE%A2-220446/" title="牛客 220446">牛客 220446</a><time datetime="2024-01-03T15:34:43.000Z" title="Created 2024-01-03 23:34:43">2024-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/Codeforces-Gym-103447/" title="Codeforces Gym 103447">Codeforces Gym 103447</a><time datetime="2024-01-01T08:22:06.000Z" title="Created 2024-01-01 16:22:06">2024-01-01</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">69</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-06T09:08:06.315Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
