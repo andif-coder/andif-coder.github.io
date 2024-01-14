@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-01-14 02:43:28'
+  postUpdate: '2024-01-14 23:32:52'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -160,11 +160,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">75</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/01/Codeforces-Gym-103447/" title="Codeforces Gym 103447">Codeforces Gym 103447</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-01T08:22:06.000Z" title="Created 2024-01-01 16:22:06">2024-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">G.Damaged Bicycle
-题意
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">76</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/03/%E7%89%9B%E5%AE%A2-220446/" title="牛客 220446">牛客 220446</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-03T15:34:43.000Z" title="Created 2024-01-03 23:34:43">2024-01-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> NC220446 - Cities
+ 题意
+有nnn个城市，每个城市的颜色是aia_iai​，然后你每次可以把连续的并且颜色相同的城市换一个颜色，问你最少执行多少次这种操作，把所有城市颜色都变成一样
+ 数据范围
+1≤t≤1601 \leq t \leq 1601≤t≤160
+1≤n≤50001 \leq n \leq 50001≤n≤5000
+1≤ai≤n1 \leq a_i \leq n1≤ai​≤n
+∑n≤6000\sum n \leq 6000∑n≤6000
+ 思路
+数据保证了同一个aia_iai​最多出现151515次，肯定有蹊跷。
+我们考虑一次换颜色的操作，会形成什么后果呢？
+相邻两种颜色一样了，
+1，2，3，4，5，61，2，3，4，5，61，2，3，4，5，6
+我们把222变成333的话，就相当于减少了一对不匹配的颜色，如果都是一对一对消除的话，我们需要n−1n - 1n−1次
+那么如果是
+1，2，3，2，11，2，3，2，11，2，3，2，1
+我们把333变成222的话，就减少了两对不匹配的颜色（2，32，32，3和3，23，23，2），不然发现我们的次数就变少了一次 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/01/Codeforces-Gym-103447/" title="Codeforces Gym 103447">Codeforces Gym 103447</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-01T08:22:06.000Z" title="Created 2024-01-01 16:22:06">2024-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> G.Damaged Bicycle
+ 题意
 给你nnn个点，mmm个无向边的图，让你从111到nnn，我们知道人的速度为ttt，自行车的速度为rrr，如果一个点没有自行车，那么你就只能步行，如果一个点有自行车的话，并且自行车是好的状态下，你就会直接骑自行车到nnn，问你最少花费的期望时间。
 有kkk个点有自行车，第iii个自行车坏的概率是p[i]p[i]p[i]。
-数据范围
+ 数据范围
 1≤t≤r≤1041 \leq t \leq r \leq 10^41≤t≤r≤104
 1≤n,m≤1051 \leq n, m \leq 10^51≤n,m≤105
 1≤ui,vi≤n,ui≠vi1 \leq u_i, v_i \leq n, u_i \neq v_i1≤ui​,vi​≤n,ui​=vi​
@@ -172,37 +188,37 @@
 0≤k≤180 \leq k \leq 180≤k≤18
 1≤ai≤n1 \leq a_i \leq n1≤ai​≤n
 0≤pi≤1000 \leq p_i \leq 1000≤pi​≤100
-思路
-我们知道从某个点走去终点的方式其实就 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/01/Codeforces-Gym-103389/" title="Codeforces Gym 103389">Codeforces Gym 103389</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-01T05:49:08.000Z" title="Created 2024-01-01 13:49:08">2024-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">C.连锁商店
-题意
+ 思路
+我们知道从某个点走去终点的方 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/01/Codeforces-Gym-103389/" title="Codeforces Gym 103389">Codeforces Gym 103389</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-01T05:49:08.000Z" title="Created 2024-01-01 13:49:08">2024-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> C.连锁商店
+ 题意
 给你nnn个景点，景点的高度从低到高，然后有mmm个缆车，每个缆车只会从低连向高的景点，然后第iii个景点属于第c[i]c[i]c[i]公司，第iii个公司会给旅客一个红包w[i]w[i]w[i]，然后问你从第111个景点到达第iii个景点能收到的最大红包是多少？
-数据范围
+ 数据范围
 2≤n≤362 \leq n \leq 362≤n≤36
 1≤m≤n(n−1)21 \leq m \leq \frac{n(n-1)}{2}1≤m≤2n(n−1)​
 1≤ci≤n1 \leq c_i \leq n1≤ci​≤n
 1≤wi≤1061 \leq w_i \leq 10^61≤wi​≤106
-思路
+ 思路
 如果按照正常旅行商的状压DP来做，f[i][j]f[i][j]f[i][j]表示经过了状态为iii的景点，现在在第jjj个节点的最大红包，
 但是你发现nnn最大值是363636的，那么2362 ^ {36}236显然不合理，
 不难发现，我们不关心经过的景点，只关心经过的公司（因为同一个公司最多只能领取一次红包）
-那我们考虑公司，如果是这个公司只有一个景点，那么我直接取就可，如果这个公司包含大 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/31/%E6%B4%9B%E8%B0%B7-CF449D/" title="洛谷 CF449D">洛谷 CF449D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-31T08:41:11.000Z" title="Created 2023-12-31 16:41:11">2023-12-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Jzzhu and Numbers
-题意
+那我们考虑公司，如果是这个公司只有一个景点，那么我直接取就可，如果这个公 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/31/%E6%B4%9B%E8%B0%B7-CF449D/" title="洛谷 CF449D">洛谷 CF449D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-31T08:41:11.000Z" title="Created 2023-12-31 16:41:11">2023-12-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Jzzhu and Numbers
+ 题意
 给你一个长度为nnn的数组，包含a1,⋯ ,ana_1, \cdots, a_na1​,⋯,an​，问你有多少个子集满足，子集里面的交为000, 答案对1e9+71e9+71e9+7取模。
-数据范围
+ 数据范围
 1≤n≤1061 \leq n \leq 10^61≤n≤106
 0≤ai≤1060 \leq a_i \leq 10^60≤ai​≤106
-思路
+ 思路
 我们设hih_ihi​表示交为iii的方案数，但是我们发现这个显然不好求，
 我们定义hTh_ThT​的后缀和HT=∑T⊆T1hT1H_T = \sum_{T \subseteq T_1} h_{T_1}HT​=∑T⊆T1​​hT1​​,
 我们从另外一个角度来求解HTH_THT​，可以发现HTH_THT​就是2T⊆ai的个数−12 ^ {T \subseteq a_i的个数} - 12T⊆ai​的个数−1（−1-1−1是排除空集），求完HiH_iHi​后，就可以通过高位后缀和反向求原数值的方法，求出hih_ihi​，最终答案就是h0h_0h0​.
-代码
-12345678910111213141516171 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/31/%E6%B4%9B%E8%B0%B7-CF165E/" title="洛谷 CF165E">洛谷 CF165E</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-31T07:58:52.000Z" title="Created 2023-12-31 15:58:52">2023-12-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Compatible Numbers
-题意
+ 代码
+123456789101112131415 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/31/%E6%B4%9B%E8%B0%B7-CF165E/" title="洛谷 CF165E">洛谷 CF165E</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-31T07:58:52.000Z" title="Created 2023-12-31 15:58:52">2023-12-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Compatible Numbers
+ 题意
 给你一个长度为nnn的序列a1,⋯ ,ana_1, \cdots, a_na1​,⋯,an​，问你对于每一个aia_iai​找到一个aja_jaj​，使得ai&amp;aj=0a_i \&amp; a_j = 0ai​&amp;aj​=0，如果没有的话输出−1-1−1
-数据范围
+ 数据范围
 1≤n≤1061 \leq n \leq 10^61≤n≤106
 1≤ai≤4×1061 \leq a_i \leq 4 \times 10^61≤ai​≤4×106
-思路
+ 思路
 我们发现，情况只有以下两种，
 
 
@@ -221,80 +237,63 @@
 如果 ai~a_i ai​的位等于111，那么aja_jaj​对应的位可以是000或者111
 
 
-可以发现，找满足ai&amp;aj=0a_i \&amp ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/30/POJ-POJ2411/" title="POJ POJ2411">POJ POJ2411</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-30T09:29:05.000Z" title="Created 2023-12-30 17:29:05">2023-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Mondriaan’s Dream
-题意
+可以发现，找满足ai&amp;aj=0a_i \ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/30/POJ-POJ2411/" title="POJ POJ2411">POJ POJ2411</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-30T09:29:05.000Z" title="Created 2023-12-30 17:29:05">2023-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Mondriaan’s Dream
+ 题意
 给你一个矩形n×mn \times mn×m，然后给你无数个1×21 \times 21×2的小矩形,问你有多少种方案可以铺满？
-数据范围
+ 数据范围
 1≤n,m≤111 \leq n, m \leq 111≤n,m≤11
-思路
+ 思路
 状态压缩DP, f[i][j][k]f[i][j][k]f[i][j][k]表示枚举完了(i,j)(i, j)(i,j)，轮廓线的状态为kkk的情况，如果k=10011k = 10011k=10011，为111的位，就表示对应那一列原先放置的东西给占住了，如果为000就表示没有被原来放置的东西占住，那么最终答案就是f[n][m][0]f[n][m][0]f[n][m][0]
 
-代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263/** *    author: andif *    created: 30.12.2023 16:53:28**/# ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/30/%E6%B4%9B%E8%B0%B7-P6754/" title="洛谷 P6754">洛谷 P6754</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-30T07:36:01.000Z" title="Created 2023-12-30 15:36:01">2023-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P6754 [BalticOI 2013 Day1] Palindrome-Free Numbers
-题意
+ 代码
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263/** *    author: andif *    created: 30.12.2023 16:53:2 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/30/%E6%B4%9B%E8%B0%B7-P6754/" title="洛谷 P6754">洛谷 P6754</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-30T07:36:01.000Z" title="Created 2023-12-30 15:36:01">2023-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P6754 [BalticOI 2013 Day1] Palindrome-Free Numbers
+ 题意
 如果一个数字中的某个长度大于111的子串为回文串，那么这个数字串就称为数字回文串，
 给你区间[l,r][l, r][l,r]，问你有多少个非数字回文串
-数据范围
+ 数据范围
 0≤l≤r≤10180 \leq l \leq r \leq 10 ^ {18}0≤l≤r≤1018
-思路
+ 思路
 数位DP，分成mmm类，每一类去动规，
 定义状态dp[i][j][k][ok]dp[i][j][k][ok]dp[i][j][k][ok]表示枚举到了第iii位，第iii位为jjj，第i−1i - 1i−1位为kkk，是否已经满足数字回文串的定义的方案数为多少
-注意事项
+ 注意事项
 
 开long long
 int定义成bool（你可真是个天才）
 注意数据范围包括000
 
-代码
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-P3413/" title="洛谷 P3413">洛谷 P3413</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T10:15:49.000Z" title="Created 2023-12-24 18:15:49">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P3413 SAC#1 - 萌数
-题意
+ 代码
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-P3413/" title="洛谷 P3413">洛谷 P3413</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T10:15:49.000Z" title="Created 2023-12-24 18:15:49">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P3413 SAC#1 - 萌数
+ 题意
 定义萌数：存在至少一个长度大于等于222的回文子串的数字
 给你一个区间[l,r][l, r][l,r]，问你这个区间里面有多少个萌数
-数据范围
+ 数据范围
 l,rl, rl,r在十进制的位数n≤1000n \leq 1000n≤1000
-思路
+ 思路
 数位DP，定义如下状态dp[i][j][k][ok][f][pf][u]dp[i][j][k][ok][f][pf][u]dp[i][j][k][ok][f][pf][u]，表示第iii位，当前位是jjj，前一位是kkk，然后是不是已经是萌数，第iii位是不是前导零，第i−1i - 1i−1位是不是前导零，是不是达到上界。
-代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-SP10649/" title="洛谷 SP10649">洛谷 SP10649</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T08:48:28.000Z" title="Created 2023-12-24 16:48:28">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">MYQ10 - Mirror Number
-题意
+ 代码
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-SP10649/" title="洛谷 SP10649">洛谷 SP10649</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T08:48:28.000Z" title="Created 2023-12-24 16:48:28">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> MYQ10 - Mirror Number
+ 题意
 给你ttt个查询，每个查询问你区间[a,b][a, b][a,b]内有多少个数字，满足上下对称并且左右对称的
-数据范围
+ 数据范围
 1≤t≤1051 \leq t \leq 10^51≤t≤105
 0≤a≤b≤10440 \leq a \leq b \leq 10 ^ {44}0≤a≤b≤1044
-思路
+ 思路
 首先我们知道数位只能有0,1,80, 1, 80,1,8，
 数位DP，分成mmm类，每一类去计算有多少个数字满足，
 对于第iii类，其实我们前iii位都知道了，那么最后iii位也就固定了，
 假设已经知道了lll位，后面还剩rrr位，如果r≥lr \geq lr≥l的话，那么我们就加上r−lr - lr−l位的对称串的方案数即可，如果r&lt;lr &lt; lr&lt;l的话，那么这个串就固定了，我们就检查一下这个串是不是合法就行
-代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-P4127/" title="洛谷 P4127">洛谷 P4127</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T07:16:17.000Z" title="Created 2023-12-24 15:16:17">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P4127 [AHOI2009] 同类分布
-题意
+ 代码
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/24/%E6%B4%9B%E8%B0%B7-P4127/" title="洛谷 P4127">洛谷 P4127</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-24T07:16:17.000Z" title="Created 2023-12-24 15:16:17">2023-12-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P4127 [AHOI2009] 同类分布
+ 题意
 给出一个区间[a,b][a, b][a,b]，问你区间里面有多少个整数，满足数位和能够整除原数
-数据范围
+ 数据范围
 1≤a≤b≤10181 \leq a \leq b \leq 10^{18}1≤a≤b≤1018
-思路
+ 思路
 我当时相等是dp[i][j][k]dp[i][j][k]dp[i][j][k]表示前iii位，数位和为jjj，然后原数取模jjj的余数为kkk，但是发现这样根本转移不了！！！
 看了题解后，我们其实可以枚举模数的（或者说枚举数位和），假设模数为modmodmod，那么dp[i][j][k]dp[i][j][k]dp[i][j][k]就表示前iii位，数位和为jjj，然后原数取模modmodmod的余数为kkk，这样转移就方便多了，在这个模数下的答案就是dp[m][mod][0]dp[m][mod][0]dp[m][mod][0]也就是模数和数位和相等，然后余数为000的情况
 只是这样可能超时，所以加了一维表示是不是达到上界
-代码
-1234567891011121314151617181920212223242526272829303 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/17/%E6%B4%9B%E8%B0%B7-CF1560F2/" title="洛谷 CF1560F2">洛谷 CF1560F2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-12-17T09:18:03.000Z" title="Created 2023-12-17 17:18:03">2023-12-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Nearest Beautiful Number (hard version)
-题意
-给你nnn和kkk，问你第一个满足下列条件的整数xxx是多少？
-
-x≥nx \geq nx≥n
-xxx是kkk-美丽数
-
-kkk-美丽数的定义: 数字的数位出现的次数不超过kkk
-思路
-和正常小于等于的数位DP不太一样，这题是大于等于
-但是思路是一样的，因为答案肯定和nnn的位数是一样的，9⋯99 \cdots 99⋯9肯定是满足的！！
-那么其实我们可以把大于等于nnn的分成mmm类，比如n=12345n = 12345n=12345，那么m=5m = 5m=5，
-
-第一类: [12346,12349][12346, 12349][12346,12349]
-第二类: [12350,12359][12350, 12359][12350,12359]
-第三类: [12400,12999][12400, 12999][12400,12999]
-第四类: [13000,19999][13000, 19999][13000,19999]
-第五类: [20000,99999][20000, 99999][2000 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#content-inner">8</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">75</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF1187E/" title="洛谷 CF1187E">洛谷 CF1187E</a><time datetime="2024-01-13T18:36:25.000Z" title="Created 2024-01-14 02:36:25">2024-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF708C/" title="洛谷 CF708C">洛谷 CF708C</a><time datetime="2024-01-13T16:17:13.000Z" title="Created 2024-01-14 00:17:13">2024-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3478/" title="洛谷 P3478">洛谷 P3478</a><time datetime="2024-01-13T07:45:01.000Z" title="Created 2024-01-13 15:45:01">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3047/" title="洛谷 P3047">洛谷 P3047</a><time datetime="2024-01-13T06:19:39.000Z" title="Created 2024-01-13 14:19:39">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/07/%E6%B4%9B%E8%B0%B7-P2986/" title="洛谷 P2986">洛谷 P2986</a><time datetime="2024-01-07T11:58:03.000Z" title="Created 2024-01-07 19:58:03">2024-01-07</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">75</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-13T18:43:28.492Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+ 代码
+12345678910111213141516171819202122232425262728 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#content-inner">8</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">76</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-P6419/" title="洛谷 P6419">洛谷 P6419</a><time datetime="2024-01-14T15:18:20.000Z" title="Created 2024-01-14 23:18:20">2024-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF1187E/" title="洛谷 CF1187E">洛谷 CF1187E</a><time datetime="2024-01-13T18:36:25.000Z" title="Created 2024-01-14 02:36:25">2024-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF708C/" title="洛谷 CF708C">洛谷 CF708C</a><time datetime="2024-01-13T16:17:13.000Z" title="Created 2024-01-14 00:17:13">2024-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3478/" title="洛谷 P3478">洛谷 P3478</a><time datetime="2024-01-13T07:45:01.000Z" title="Created 2024-01-13 15:45:01">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3047/" title="洛谷 P3047">洛谷 P3047</a><time datetime="2024-01-13T06:19:39.000Z" title="Created 2024-01-13 14:19:39">2024-01-13</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">76</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-14T15:32:51.591Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
