@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-03-24 15:29:04'
+  postUpdate: '2024-03-24 17:02:46'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -160,33 +160,45 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">91</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/02/%E6%B4%9B%E8%B0%B7-CF1859D/" title="洛谷 CF1859D">洛谷 CF1859D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-02T12:09:32.000Z" title="Created 2024-03-02 20:09:32">2024-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Andrey and Escape from Capygrad
- 题意
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">92</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/shouye.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Andif的小破站"><span class="site-name">Andif的小破站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Andif的小破站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/03/%E6%B4%9B%E8%B0%B7-CF1856E1/" title="洛谷 CF1856E1">洛谷 CF1856E1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-03T07:42:23.000Z" title="Created 2024-03-03 15:42:23">2024-03-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">PermuTree (easy version)
+题意
+这个是问题的简单版本，两个版本的区别就是nnn的范围不同，时间限制不同
+给定一棵111为根的树，然后那你用一个[1,n][1, n][1,n]的全排列aaa，来给树上每个节点赋值，使得满足条件的二元组(u,v)(u, v)(u,v)数量最多，
+条件：
+au&lt;alca(u,v)&lt;ava_u &lt; a_{lca(u, v)} &lt; a_vau​&lt;alca(u,v)​&lt;av​
+数据范围
+2≤n≤50002 \leq n \leq 50002≤n≤5000
+思路
+我的想法，就是每个子树里面都是一段连续的序列，但是我不清楚怎么证明！
+假设我上面的成立的话，
+那么其实对于一棵子树，就是确定根所选的点xxx，那么这个子树的贡献就是[1,x−1]×[x+1,子树大小−1][1, x - 1] \times [x + 1, 子树大小 - 1][1,x−1]×[x+1,子树大小−1]，
+我们知道这个子树的大小是恒定的，那么其实就是求x−1x - 1x−1和子树大小−1−(x+1)+1子树大小-1-(x+1)+1子树大小 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/02/%E6%B4%9B%E8%B0%B7-CF1859D/" title="洛谷 CF1859D">洛谷 CF1859D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-02T12:09:32.000Z" title="Created 2024-03-02 20:09:32">2024-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Andrey and Escape from Capygrad
+题意
 给定nnn个区间对，每对区间由大区间[li,ri][l_i, r_i][li​,ri​]和小区间[ai,bi][a_i, b_i][ai​,bi​]构成， 在任意时间，你可以使用移动大法，
 比如你现在位于位置iii，那么如果你可以选择任意一个区间，这个区间对的大区间包含iii，那么你可以达到这个小区间的任意位置
 qqq组数据，给你一个初始位置，问你能达到的最右边位置是多少
- 数据范围
+数据范围
 1≤t≤1041 \leq t \leq 10^41≤t≤104
 1≤n≤2×1051 \leq n \leq 2 \times 10^51≤n≤2×105
 1≤li≤ai≤bi≤ri≤1091 \leq l_i \leq a_i \leq b_i \leq r_i \leq 10^91≤li​≤ai​≤bi​≤ri​≤109
 1≤q≤2×1051 \leq q \leq 2 \times 10^51≤q≤2×105
 1≤xi≤1091 \leq x_i \leq 10^91≤xi​≤109
-∑n≤2×105\sum n \leq  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/02/%E6%B4%9B%E8%B0%B7-CF1734D/" title="洛谷 CF1734D">洛谷 CF1734D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-02T09:21:54.000Z" title="Created 2024-03-02 17:21:54">2024-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Slime Escape
- 题意
+∑n≤2×105\sum n \leq 2 \ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/03/02/%E6%B4%9B%E8%B0%B7-CF1734D/" title="洛谷 CF1734D">洛谷 CF1734D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-02T09:21:54.000Z" title="Created 2024-03-02 17:21:54">2024-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Slime Escape
+题意
 有nnn个球，球位于[1,n][1, n][1,n]的位置，每个球有aia_iai​的健康值，你现在初始在kkk这个位置，
 然后你每次可以向左或者向右走一格， 每次走到的各自会把你当前的球和这个位置的球做一次合并，合并完后当前球的健康值就加等于这个位置球的健康值，然后这个位置的球消失，问你能不能保证走的过程中，不出现球的健康值为负数的情况，并且你现在要走到000或者n+1n + 1n+1的位置
- 数据范围
+数据范围
 1≤t≤200001 \leq t \leq 200001≤t≤20000
 1≤n≤2000001 \leq n \leq 2000001≤n≤200000
 1≤k≤n1 \leq k \leq n1≤k≤n
 −109≤ai≤109-10^9 \leq a_i \leq 10^9−109≤ai​≤109
 ∑n≤200000\sum n \leq 200000∑n≤200000
 ak≥0a_k \geq 0ak​≥0
- 思路
+思路
 我们可以枚举我们最终从左边出去还是右边出去，
 这两个的处理方式一样，我就以右边出去为例子
-首先，我们每次走到右边一个位置的时候 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/24/%E6%B4%9B%E8%B0%B7-CF1354D/" title="洛谷 CF1354D">洛谷 CF1354D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-24T11:28:20.000Z" title="Created 2024-02-24 19:28:20">2024-02-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Multiset
- 题意
+首先，我们每次走到右边一个位置的时候，都可以 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/24/%E6%B4%9B%E8%B0%B7-CF1354D/" title="洛谷 CF1354D">洛谷 CF1354D</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-24T11:28:20.000Z" title="Created 2024-02-24 19:28:20">2024-02-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Multiset
+题意
 维护一个可重集合。初始有nnn个正整数a1,⋯ ,ana_1, \cdots, a_na1​,⋯,an​，他们的值域是[1,n][1, n][1,n]，
 现在有qqq个操作，一共两类
 
@@ -198,42 +210,42 @@ ak≥0a_k \geq 0ak​≥0
 
 
 都操作完了后，输出任意一个集合里面的数字
- 数据范围
+数据范围
 n,q≤106n, q \leq 10^6n,q≤106
- 思路
+思路
 树状数组二分求第kkk小就行
- 代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091/** *    author: andif *    created: 24.02.2024 19:08:19**/#include&lt;bits/stdc++. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/24/HDU-2852/" title="HDU 2852">HDU 2852</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-24T09:11:36.000Z" title="Created 2024-02-24 17:11:36">2024-02-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> KiKi’s K-Number
- 题意
+代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091/** *    author: andif *    created: 24.02.2024 19:08:19**/#include&lt;bits/stdc++.h&gt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/24/HDU-2852/" title="HDU 2852">HDU 2852</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-24T09:11:36.000Z" title="Created 2024-02-24 17:11:36">2024-02-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">KiKi’s K-Number
+题意
 给你一个数字mmm表示一共有几次操作，每个操作都有一个类型 p=0,1,2p = 0, 1, 2p=0,1,2,
 
 当p=0p = 0p=0时，输入eee表示要往数组里面插入一个数字eee
 当p=1p = 1p=1时，输入eee表示要从数组里面删除一个数字eee，如果没有这个数字，输出NoElment!No Elment!NoElment!
 当p=2p = 2p=2时，输出两个数字a,ka,ka,k，让你求大于aaa的第kkk大个数字是什么，如果没有这个数字，则输出NotFind!Not Find!NotFind!
 
- 数据范围
+数据范围
 1≤m≤1061 \leq m \leq 10^61≤m≤106
 1≤e,a&lt;1061 \leq e, a &lt; 10^61≤e,a&lt;106
 1≤k&lt;1041 \leq k &lt; 10^41≤k&lt;104
- 思路
+思路
 用树状数组维护每个数字出现的次数，然后用树状数组二分来求解
-我们二分就是前缀和小于query(a)+kquery(a) + kquery(a)+k的最右边的位置，那么+=1+=1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/03/%E6%B4%9B%E8%B0%B7-CF1551F/" title="洛谷 CF1551F">洛谷 CF1551F</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-03T08:25:49.000Z" title="Created 2024-02-03 16:25:49">2024-02-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Equidistant Vertices
- 题意
+我们二分就是前缀和小于query(a)+kquery(a) + kquery(a)+k的最右边的位置，那么+=1+=1+=1之 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/03/%E6%B4%9B%E8%B0%B7-CF1551F/" title="洛谷 CF1551F">洛谷 CF1551F</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-03T08:25:49.000Z" title="Created 2024-02-03 16:25:49">2024-02-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Equidistant Vertices
+题意
 给你一个nnn个点的树，要求选出kkk个点，使得这kkk个点两两距离相同，问你这样的kkk个点的方案有多少种，答案取模1e9+71e9 + 71e9+7，一共ttt组
- 数据范围
+数据范围
 2≤k≤n≤1002 \leq k \leq n \leq 1002≤k≤n≤100
 1≤t≤101 \leq t \leq 101≤t≤10
- 思路
+思路
 通过构造不难发现，当k==2k == 2k==2的时候时候答案就是 (n2)\tbinom{n}{2}(2n​)，
 当k&gt;2k &gt; 2k&gt;2的时候，一定存在一个分叉点，这kkk个点达到分叉点的距离都相同（我也不知道怎么证明，
-那么这样之后，我们其实就可以求出每个点为根（分叉点）的时候，每个子树（包括父亲这个子树）中，距离分叉点为d,1≤d&lt;nd, 1 \leq d &lt; nd,1≤d&lt;n的数量，现在我们枚举了距离ddd，还有枚举了根uuu，我们就可以得到一个序列，其中第iii个点表示uuu的第iii个子树中，距离uuu的长度为ddd的节点数量（为000的就不用管了），假设大于 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-P6419/" title="洛谷 P6419">洛谷 P6419</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-14T15:18:20.000Z" title="Created 2024-01-14 23:18:20">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P6419 [COCI2014-2015#1] Kamp
- 题意
+那么这样之后，我们其实就可以求出每个点为根（分叉点）的时候，每个子树（包括父亲这个子树）中，距离分叉点为d,1≤d&lt;nd, 1 \leq d &lt; nd,1≤d&lt;n的数量，现在我们枚举了距离ddd，还有枚举了根uuu，我们就可以得到一个序列，其中第iii个点表示uuu的第iii个子树中，距离uuu的长度为ddd的节点数量（为000的就不用管了），假设大于数量大于 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-P6419/" title="洛谷 P6419">洛谷 P6419</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-14T15:18:20.000Z" title="Created 2024-01-14 23:18:20">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P6419 [COCI2014-2015#1] Kamp
+题意
 给你一个nnn个点的树，每个边都有个边权，在树上有KKK个点有人，你现在要选择一个点聚餐，聚餐后要把KKK个人都送回原来的位置，问你如果在[1,n][1, n][1,n]个点分别聚会，最少的权重是多少
- 数据范围
+数据范围
 1≤K≤n≤5×1051 \leq K \leq n \leq 5 \times 10^51≤K≤n≤5×105
 1≤x,y≤n1 \leq x, y \leq n1≤x,y≤n
 1≤z≤1081 \leq z \leq 10^81≤z≤108
- 思路
+思路
 换根DP，
 定义状态
 假设111为根:
@@ -250,22 +262,23 @@ g[u]g[u]g[u]表示从uuu开始走，走完uuu这个子树所有客人后停在�
 定义状态
 
 
-f2[u]f2[u]f2[u]表示uuu的父亲节点变成uuu的子节点后，走完父亲节点这个子树再回到uuu的最 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF1187E/" title="洛谷 CF1187E">洛谷 CF1187E</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T18:36:25.000Z" title="Created 2024-01-14 02:36:25">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Tree Painting
- 题意
+f2[u]f2[u]f2[u]表示uuu的父亲节点变成uuu的子节点后，走完父亲节点这个子树再回到uuu的最小代价
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF1187E/" title="洛谷 CF1187E">洛谷 CF1187E</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T18:36:25.000Z" title="Created 2024-01-14 02:36:25">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Tree Painting
+题意
 每次选择和黑点相邻的某个白点，把它变成黑点，然后获取白点原来所在连通块的大小权值，初始黑点随便选，问你怎么样权值可以最大？
- 数据范围
+数据范围
 2≤n≤2×1052 \leq n \leq 2 \times 10^52≤n≤2×105
- 思路
+思路
 换根DP，f[u]f[u]f[u]表示在111为根的前提下，f[u]f[u]f[u]的贡献
 g[u]g[u]g[u]表示根从uuu的父亲点转移到uuu的时候，父亲点对于uuu的贡献
 主要就是ggg的转移，我们假设现在是从u→vu \rightarrow vu→v，那么我们已知uuu为根的时候结果为f[u]+g[u]f[u] + g[u]f[u]+g[u]，这时候根换成vvv，那么vvv现在点击的时候需要加上n−siz[v]n - siz[v]n−siz[v]，然后uuu变成子树的话子树的贡献是f[u]+g[u]−f[v]−siz[v]f[u] + g[u] - f[v] - siz[v]f[u]+g[u]−f[v]−siz[v]
- 代码
-1234567891011121314151617181920212223242 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF708C/" title="洛谷 CF708C">洛谷 CF708C</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T16:17:13.000Z" title="Created 2024-01-14 00:17:13">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> Centroids
- 题意
+代码
+123456789101112131415161718192021222324252627 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/14/%E6%B4%9B%E8%B0%B7-CF708C/" title="洛谷 CF708C">洛谷 CF708C</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T16:17:13.000Z" title="Created 2024-01-14 00:17:13">2024-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">Centroids
+题意
 每个点作为根，然后你可以删一条边再建一条边（保证操作后还是一棵树）使得这个点变成重心（删除这个点后的各个连通块的数量都小于等于n2\frac{n}{2}2n​
- 数据范围
+数据范围
 2≤n≤4000002 \leq n \leq 4000002≤n≤400000
- 思路
+思路
 换根DP，
 我们先定义&quot;合法&quot;就是这个大小小于等于n2\frac{n}{2}2n​
 我们定义如下状态
@@ -285,23 +298,14 @@ siz[u]siz[u]siz[u]表示uuu的子树大小
 
 fff和f2f2f2的转移：
 fff的转移:
-如果有不合法子树的话，判断子树的mxmxmx是否合法，如果合法那么最大的肯定是mxmxmx，如果mxmxmx不合法，那么f[u]=f[v]f[u] = f[v]f[u]=f[v]，如果没有不合法的子树 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3478/" title="洛谷 P3478">洛谷 P3478</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T07:45:01.000Z" title="Created 2024-01-13 15:45:01">2024-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P3478 [POI2008] STA-Station
- 题意
+如果有不合法子树的话，判断子树的mxmxmx是否合法，如果合法那么最大的肯定是mxmxmx，如果mxmxmx不合法，那么f[u]=f[v]f[u] = f[v]f[u]=f[v]，如果没有不合法的子树，那么就 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3478/" title="洛谷 P3478">洛谷 P3478</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T07:45:01.000Z" title="Created 2024-01-13 15:45:01">2024-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">P3478 [POI2008] STA-Station
+题意
 给你一个nnn节点的树，让你求以哪一个节点为根，使得所有节点的深度和最大
- 思路
+思路
 换根DP，f[u]f[u]f[u]表示以uuu为根的子树的深度和，g[u]g[u]g[u]表示uuu的父亲节点为根的情况下，uuu的父亲节点变成uuu的子节点的时候对uuu的贡献，
 转移就是g[v]=f[u]+g[u]−sz[v]+n−sz[v]g[v] = f[u] + g[u] - sz[v] + n - sz[v]g[v]=f[u]+g[u]−sz[v]+n−sz[v]
- 代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576/** *    author: andif *    created: 13.01.2024 14:34:15**/#include&lt;bits/stdc++.h&gt;u ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/13/%E6%B4%9B%E8%B0%B7-P3047/" title="洛谷 P3047">洛谷 P3047</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-13T06:19:39.000Z" title="Created 2024-01-13 14:19:39">2024-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content"> P3047 [USACO12FEB] Nearby Cows G
- 题意
-给你一个nnn个点的树，对于每个节点求出距离它不超过kkk的所有节点的权值，第iii个点的权值是cic_ici​
- 思路
-换根DP， f[u][i]f[u][i]f[u][i]表示以111为根的情况下uuu的子树里面和uuu的距离是iii的节点的权值和，
-考虑换根u→vu \rightarrow vu→v，g[u][i]g[u][i]g[u][i]表示vvv的父节点uuu变成vvv的子节点的情况下，uuu的子树到vvv距离为iii的节点权值和
-那么我们就知道到每个节点距离为iii的节点的权值和为f[u][i]+g[u][i]f[u][i] + g[u][i]f[u][i]+g[u][i]，
-换根转移的话就是g[v][i]=f[u][i−1]+g[u][i−1]−f[v][i−2]g[v][i] = f[u][i - 1] + g[u][i - 1] -f[v][i - 2]g[v][i]=f[u][i−1]+g[u][i−1]−f[v][i−2].
- 数据范围
-1≤n≤1051 \leq n \leq 10^5 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">91</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/24/%E6%B4%9B%E8%B0%B7-CF1286A/" title="洛谷 CF1286A">洛谷 CF1286A</a><time datetime="2024-03-24T07:24:44.000Z" title="Created 2024-03-24 15:24:44">2024-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/17/BZOJ-B3687/" title="BZOJ B3687">BZOJ B3687</a><time datetime="2024-03-17T14:10:13.000Z" title="Created 2024-03-17 22:10:13">2024-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/17/%E6%B4%9B%E8%B0%B7-P2403/" title="洛谷 P2403">洛谷 P2403</a><time datetime="2024-03-17T07:57:23.000Z" title="Created 2024-03-17 15:57:23">2024-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/10/%E6%B4%9B%E8%B0%B7-CF689D/" title="洛谷 CF689D">洛谷 CF689D</a><time datetime="2024-03-10T13:41:44.000Z" title="Created 2024-03-10 21:41:44">2024-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/10/%E6%B4%9B%E8%B0%B7-P3373/" title="洛谷 P3373">洛谷 P3373</a><time datetime="2024-03-10T07:49:27.000Z" title="Created 2024-03-10 15:49:27">2024-03-10</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">91</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-03-24T07:29:03.200Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576/** *    author: andif *    created: 13.01.2024 14:34:15**/#include&lt;bits/stdc++.h&gt;using ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Andif</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">92</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">杂乱无章的记事本</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/24/%E6%B4%9B%E8%B0%B7-CF1283E/" title="洛谷 CF1283E">洛谷 CF1283E</a><time datetime="2024-03-24T08:58:03.000Z" title="Created 2024-03-24 16:58:03">2024-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/24/%E6%B4%9B%E8%B0%B7-CF1286A/" title="洛谷 CF1286A">洛谷 CF1286A</a><time datetime="2024-03-24T07:24:44.000Z" title="Created 2024-03-24 15:24:44">2024-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/17/BZOJ-B3687/" title="BZOJ B3687">BZOJ B3687</a><time datetime="2024-03-17T14:10:13.000Z" title="Created 2024-03-17 22:10:13">2024-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/17/%E6%B4%9B%E8%B0%B7-P2403/" title="洛谷 P2403">洛谷 P2403</a><time datetime="2024-03-17T07:57:23.000Z" title="Created 2024-03-17 15:57:23">2024-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/10/%E6%B4%9B%E8%B0%B7-CF689D/" title="洛谷 CF689D">洛谷 CF689D</a><time datetime="2024-03-10T13:41:44.000Z" title="Created 2024-03-10 21:41:44">2024-03-10</time></div></div></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">92</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-03-24T09:02:46.064Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Andif</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
